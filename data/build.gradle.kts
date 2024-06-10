@@ -1,6 +1,8 @@
 plugins {
     id("com.android.library")
     id("kotlin-android")
+    id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -40,4 +42,12 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation(libs.retrofit2)
+    implementation(libs.retrofit2.gson.converter)
+
+    implementation(libs.hilt)
+    kapt(libs.hilt.compiler)
+
+    implementation(project(":domain"))
 }

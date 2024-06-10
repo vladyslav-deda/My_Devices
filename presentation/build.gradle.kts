@@ -53,4 +53,6 @@ dependencies {
 
     implementation(libs.bumptech.glide)
     kapt(libs.kapt.glide.compiler)
+
+    implementation(project(":domain"))
 }

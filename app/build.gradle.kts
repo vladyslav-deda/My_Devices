@@ -57,5 +57,9 @@ dependencies {
     implementation(libs.bumptech.glide)
     kapt(libs.kapt.glide.compiler)
 
+    implementation(libs.retrofit2)
+    implementation(libs.retrofit2.gson.converter)
+
     implementation(project(":presentation"))
+    implementation(project(":data"))
 }
