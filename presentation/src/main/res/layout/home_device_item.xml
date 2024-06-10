@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/device_image_iv"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/device_title_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/lato_bold"
+        android:gravity="start"
+        android:textColor="@color/dark_gray"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/device_sn_tv"
+        app:layout_constraintEnd_toStartOf="@+id/arrow_forward_iv"
+        app:layout_constraintStart_toEndOf="@id/device_image_iv"
+        app:layout_constraintTop_toTopOf="@+id/device_image_iv"
+        tools:text="House Number 1" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/device_sn_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/lato_regular"
+        android:gravity="start"
+        android:textColor="@color/dark_gray"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/device_image_iv"
+        app:layout_constraintEnd_toStartOf="@+id/arrow_forward_iv"
+        app:layout_constraintStart_toEndOf="@id/device_image_iv"
+        app:layout_constraintTop_toBottomOf="@+id/device_title_tv"
+        tools:text="SN: 21342141242134214" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/arrow_forward_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/arrow_forward"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
