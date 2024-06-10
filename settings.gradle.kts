@@ -21,4 +21,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "My Devices"
 include(":app")
- 
+include(":domain")
+include(":data")
+include(":presentation")
