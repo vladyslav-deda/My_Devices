@@ -3,6 +3,7 @@ package com.ezlo.mydevices.presentation.home.adapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.ezlo.mydevices.presentation.R
 import com.ezlo.mydevices.presentation.databinding.HomeDeviceItemBinding
 import com.ezlo.mydevices.presentation.home.models.DeviceUiModel
 
@@ -19,12 +20,12 @@ class DeviceViewHolder(
                 true
             }
             deviceTitleTv.text = item.title
-            deviceSnTv.text = item.deviceSn
+            deviceSnTv.text = root.resources.getString(R.string.device_sn, item.deviceSn)
             Glide
                 .with(root.context)
                 .load(androidx.constraintlayout.widget.R.drawable.tooltip_frame_dark)
                 .transform(RoundedCorners(IMAGE_CORNER))
-                .into(binding.deviceImageIv)
+                .into(deviceImageIv)
 
         }
     }

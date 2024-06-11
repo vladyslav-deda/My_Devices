@@ -1,7 +1,13 @@
-package com.ezlo.mydevices.domain.models
+package com.ezlo.mydevices.data.models
 
-data class Device(
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "devices")
+data class DeviceDbModel(
+    @PrimaryKey
     val pkDevice: Int,
+    val header: String,
     val macAddress: String,
     val pkDeviceType: Int,
     val pDeviceSubType: Int,
@@ -11,6 +17,5 @@ data class Device(
     val serverAccount: String,
     val internalIP: String,
     val lastAliveReported: String,
-    val platform: String,
-    var header: String,
+    val platform: String
 )

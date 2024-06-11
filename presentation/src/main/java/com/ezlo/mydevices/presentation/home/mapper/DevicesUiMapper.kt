@@ -12,8 +12,8 @@ class DevicesUiMapper @Inject constructor() {
         devices.forEach {
             resultList.add(
                 DeviceUiModel(
-                    title = it.firmware,
-                    deviceSn = it.pkDevice.toString()
+                    title = it.header,
+                    deviceSn = it.pkDevice
                 )
             )
         }
