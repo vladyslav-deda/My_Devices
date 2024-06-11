@@ -1,5 +1,6 @@
 package com.ezlo.mydevices.presentation.home
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.DividerItemDecoration
+import com.ezlo.mydevices.presentation.FragmentCallback
 import com.ezlo.mydevices.presentation.R
 import com.ezlo.mydevices.presentation.databinding.HomeFragmentBinding
 import com.ezlo.mydevices.presentation.home.adapter.DevicesAdapter
@@ -25,6 +27,13 @@ class HomeFragment : Fragment() {
     private val viewModel: HomeViewModel by viewModels()
 
     private var devicesAdapter: DevicesAdapter? = null
+
+    private lateinit var fragmentCallback: FragmentCallback
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        fragmentCallback = context as FragmentCallback
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -59,6 +68,7 @@ class HomeFragment : Fragment() {
 
     private fun handleUiState(state: HomeContract.State) {
         devicesAdapter?.submitList(state.items)
+        fragmentCallback.handleLoaderVisibility(state.isLoading)
     }
 
     private fun handleEffects(effect: HomeContract.Effect) {
