@@ -11,8 +11,8 @@ interface HomeContract {
     sealed interface Effect {
         data class ShowError(val throwable: Throwable) : Effect
 
-        data class OpenDeviceDetails(val deviceSn: Long) : Effect
+        data class OpenDeviceDetails(val deviceSn: Int) : Effect
 
-        data class OpenDeleteDeviceDialog(val deviceSn: Long) : Effect
+        data class OpenDeleteDeviceDialog(val deviceSn: Int) : Effect
     }
 }

@@ -7,7 +7,7 @@ interface LocalDevicesRepository {
 
     val allDevices: Flow<List<Device>>
 
-    suspend fun getDevicesById(deviceId: Long): Device?
+    suspend fun getDevicesById(deviceId: Int): Device?
 
     suspend fun insertDevice(device: Device)
 
@@ -15,5 +15,5 @@ interface LocalDevicesRepository {
 
     suspend fun deleteAllDevices()
 
-    suspend fun deleteDeviceById(deviceId: Long)
+    suspend fun deleteDeviceById(deviceId: Int)
 }

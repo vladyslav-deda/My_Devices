@@ -1,7 +1,7 @@
 package com.ezlo.mydevices.presentation.home.adapter
 
 interface DeviceInteraction {
-    fun openDetails(deviceSn: Long)
+    fun openDetails(deviceSn: Int)
 
-    fun handleDeleteDevice(deviceSn: Long)
+    fun handleDeleteDevice(deviceSn: Int)
 }

@@ -21,7 +21,7 @@ class MainViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(MainContract.State())
     val uiState: StateFlow<MainContract.State> = _uiState.asStateFlow()
 
-    fun handleDeleteClicked(deviceSn: Long) {
+    fun handleDeleteClicked(deviceSn: Int) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 _uiState.update {

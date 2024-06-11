@@ -1,7 +1,7 @@
 package com.ezlo.mydevices.domain.models
 
 data class Device(
-    val pkDevice: Long,
+    val pkDevice: Int,
     val macAddress: String,
     val pkDeviceType: Int,
     val pDeviceSubType: Int,

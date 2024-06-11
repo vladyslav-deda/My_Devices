@@ -15,7 +15,7 @@
             app:destination="@id/detailsFragment">
             <argument
                 android:name="deviceId"
-                app:argType="long" />
+                app:argType="integer" />
             <argument
                 android:name="isEditMode"
                 android:defaultValue="false"

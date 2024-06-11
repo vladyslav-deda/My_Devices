@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "devices")
 data class DeviceDbModel(
     @PrimaryKey
-    val pkDevice: Long,
+    val pkDevice: Int,
     val header: String,
     val macAddress: String,
     val pkDeviceType: Int,

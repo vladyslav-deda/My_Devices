@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity(), FragmentCallback {
         binding.loaderLayout.isVisible = isLoaderVisible
     }
 
-    override fun handleDeleteDevice(deviceSn: Long) {
+    override fun handleDeleteDevice(deviceSn: Int) {
         this.showDeleteDeviceDialog(deviceSn) {
             viewModel.handleDeleteClicked(deviceSn)
         }

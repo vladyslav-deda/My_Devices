@@ -7,7 +7,7 @@ import com.ezlo.mydevices.databinding.DeleteDeviceDialogBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 fun Context.showDeleteDeviceDialog(
-    deviceSn: Long,
+    deviceSn: Int,
     onDeleteButtonClick: () -> Unit,
 ) {
     val dialog = MaterialAlertDialogBuilder(this).create()

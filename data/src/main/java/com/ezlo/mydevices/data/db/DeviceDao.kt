@@ -10,11 +10,11 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface DeviceDao {
 
-    @Query("SELECT * FROM devices")
+    @Query("SELECT * FROM devices ORDER BY pkDevice ASC")
     fun getAllDevices(): Flow<List<DeviceDbModel>>
 
     @Query("SELECT * FROM devices WHERE pkDevice = :id")
-    fun getDeviceById(id: Long): DeviceDbModel?
+    fun getDeviceById(id: Int): DeviceDbModel?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertDevice(device: DeviceDbModel)
@@ -26,5 +26,5 @@ interface DeviceDao {
     fun deleteAllDevices()
 
     @Query("DELETE FROM devices WHERE pkDevice = :id")
-    fun deleteDeviceById(id: Long)
+    fun deleteDeviceById(id: Int)
 }

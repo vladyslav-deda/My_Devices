@@ -57,13 +57,13 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    override fun openDetails(deviceSn: Long) {
+    override fun openDetails(deviceSn: Int) {
         viewModelScope.launch {
             _effects.send(HomeContract.Effect.OpenDeviceDetails(deviceSn))
         }
     }
 
-    override fun handleDeleteDevice(deviceSn: Long) {
+    override fun handleDeleteDevice(deviceSn: Int) {
         viewModelScope.launch {
             _effects.send(HomeContract.Effect.OpenDeleteDeviceDialog(deviceSn))
         }
