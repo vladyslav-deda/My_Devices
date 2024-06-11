@@ -3,4 +3,7 @@
     <string name="profile_name">Vladyslav Deda</string>
     <string name="device_sn">SN: %d</string>
     <string name="empty_devices_list_message">Oops… it looks like the list of devices is empty, click the ‘Reset’ button to reload the list or check your internet connection</string>
+    <string name="vera_plus">Vera Plus</string>
+    <string name="vera_secure">Vera Secure</string>
+    <string name="vera_edge">Vera Edge</string>
 </resources>
