@@ -60,6 +60,9 @@ dependencies {
     implementation(libs.retrofit2)
     implementation(libs.retrofit2.gson.converter)
 
+    implementation (libs.timber)
+
     implementation(project(":presentation"))
     implementation(project(":data"))
+    implementation(project(":domain"))
 }

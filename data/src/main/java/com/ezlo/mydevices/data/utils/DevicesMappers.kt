@@ -3,7 +3,6 @@ package com.ezlo.mydevices.data.utils
 import com.ezlo.mydevices.data.models.DeviceDbModel
 import com.ezlo.mydevices.data.models.DeviceDto
 import com.ezlo.mydevices.domain.models.Device
-import javax.inject.Inject
 
 object DevicesMappers {
     fun mapDeviceDtoToDomain(list: List<DeviceDto>): List<Device> {
@@ -32,12 +31,12 @@ object DevicesMappers {
 
     fun mapDeviceDbModelToDomain(list: List<DeviceDbModel>): List<Device> {
         return list.map {
-            it.toDomain()
+            mapDeviceFromDbModel(it)
         }
     }
 
-    private fun DeviceDbModel.toDomain() =
-        this.run {
+    fun mapDeviceFromDbModel(deviceDbModel: DeviceDbModel) =
+        deviceDbModel.run {
             Device(
                 header = header,
                 pkDevice = pkDevice,

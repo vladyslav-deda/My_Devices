@@ -2,7 +2,7 @@ package com.ezlo.mydevices.presentation.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ezlo.mydevices.domain.InitDevicesListUseCase
+import com.ezlo.mydevices.domain.usecases.InitDevicesListUseCase
 import com.ezlo.mydevices.domain.models.Device
 import com.ezlo.mydevices.domain.repositories.LocalDevicesRepository
 import com.ezlo.mydevices.presentation.home.adapter.DeviceInteraction
@@ -24,6 +24,7 @@ class HomeViewModel @Inject constructor(
     private val initDevicesListUseCase: InitDevicesListUseCase,
     private val localDevicesRepository: LocalDevicesRepository
 ) : ViewModel(), DeviceInteraction {
+
     private val _uiState = MutableStateFlow(HomeContract.State(isLoading = true))
     val uiState: StateFlow<HomeContract.State> = _uiState.asStateFlow()
 
@@ -36,10 +37,7 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 initDevicesListUseCase()
-                localDevicesRepository.allDevices.collectLatest {
-                    devicesList = it
-                    updateUiState()
-                }
+                collectDevicesList()
             } catch (throwable: Throwable) {
                 _effects.send(HomeContract.Effect.ShowError(throwable))
             } finally {
@@ -48,8 +46,23 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    override fun openDetails(deviceSn: Int) {
+    private suspend fun collectDevicesList() {
+        localDevicesRepository.allDevices.collectLatest {
+            devicesList = it
+            updateUiState()
+        }
+    }
 
+    override fun openDetails(deviceSn: Long) {
+        viewModelScope.launch {
+            _effects.send(HomeContract.Effect.OpenDeviceDetails(deviceSn))
+        }
+    }
+
+    override fun handleDeleteDevice(deviceSn: Long) {
+        viewModelScope.launch {
+            _effects.send(HomeContract.Effect.OpenDeleteDeviceDialog(deviceSn))
+        }
     }
 
     private fun updateUiState(

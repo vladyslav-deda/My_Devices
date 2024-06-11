@@ -7,7 +7,7 @@ data class DevicesResponse(
 )
 
 data class DeviceDto(
-    @SerializedName("PK_Device") val pkDevice: Int? = null,
+    @SerializedName("PK_Device") val pkDevice: Long? = null,
     @SerializedName("MacAddress") val macAddress: String? = null,
     @SerializedName("PK_DeviceType") val pkDeviceType: Int? = null,
     @SerializedName("PK_DeviceSubType") val pDeviceSubType: Int? = null,

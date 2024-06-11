@@ -5,12 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.ezlo.mydevices.presentation.FragmentCallback
 import com.ezlo.mydevices.presentation.R
@@ -73,7 +75,21 @@ class HomeFragment : Fragment() {
 
     private fun handleEffects(effect: HomeContract.Effect) {
         when (effect) {
-            is HomeContract.Effect.ShowError -> {}
+            is HomeContract.Effect.ShowError -> {
+                Toast.makeText(
+                    requireContext(),
+                    "Looks like something went wrong!!!",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
+            is HomeContract.Effect.OpenDeviceDetails -> {
+                findNavController().navigate(HomeFragmentDirections.openDetailsFragment(effect.deviceSn))
+            }
+
+            is HomeContract.Effect.OpenDeleteDeviceDialog -> {
+                fragmentCallback.handleDeleteDevice(effect.deviceSn)
+            }
         }
     }
 

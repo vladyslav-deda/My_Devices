@@ -5,4 +5,5 @@
     <color name="gray">#dfdfdf</color>
     <color name="dark_gray">#4e4e4e</color>
     <color name="black_overlay">#80000000</color>
+    <color name="blue">#239bde</color>
 </resources>

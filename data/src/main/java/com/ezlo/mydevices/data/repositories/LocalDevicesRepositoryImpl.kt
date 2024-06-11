@@ -19,6 +19,11 @@ class LocalDevicesRepositoryImpl @Inject constructor(
                 DevicesMappers.mapDeviceDbModelToDomain(it)
             }
 
+    override suspend fun getDevicesById(deviceId: Long): Device? {
+        val result = deviceDao.getDeviceById(deviceId) ?: return null
+        return DevicesMappers.mapDeviceFromDbModel(result)
+    }
+
     override suspend fun insertDevice(device: Device) {
         deviceDao.insertDevice(DevicesMappers.mapDeviceToDbModel(device))
     }
@@ -32,5 +37,9 @@ class LocalDevicesRepositoryImpl @Inject constructor(
 
     override suspend fun deleteAllDevices() {
         deviceDao.deleteAllDevices()
+    }
+
+    override suspend fun deleteDeviceById(deviceId: Long) {
+        deviceDao.deleteDeviceById(deviceId)
     }
 }

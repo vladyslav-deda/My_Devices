@@ -17,6 +17,7 @@ class DeviceViewHolder(
                 interaction.openDetails(item.deviceSn)
             }
             root.setOnLongClickListener {
+                interaction.handleDeleteDevice(item.deviceSn)
                 true
             }
             deviceTitleTv.text = item.title

@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_nav_graph"
     app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.ezlo.mydevices.presentation.home.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="HomeFragment"
+        tools:layout="@layout/home_fragment">
+        <action
+            android:id="@+id/openDetailsFragment"
+            app:destination="@id/detailsFragment">
+            <argument
+                android:name="deviceId"
+                app:argType="long" />
+            <argument
+                android:name="isEditMode"
+                android:defaultValue="false"
+                app:argType="boolean" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.ezlo.mydevices.presentation.details.DetailsFragment"
+        android:label="DetailsFragment"
+        tools:layout="@layout/details_fragment" />
 </navigation>

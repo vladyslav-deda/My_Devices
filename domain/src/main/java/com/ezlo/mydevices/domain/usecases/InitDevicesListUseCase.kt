@@ -1,6 +1,7 @@
-package com.ezlo.mydevices.domain
+package com.ezlo.mydevices.domain.usecases
 
 import android.content.Context
+import com.ezlo.mydevices.domain.R
 import com.ezlo.mydevices.domain.repositories.DevicesRepository
 import com.ezlo.mydevices.domain.repositories.LocalDevicesRepository
 import dagger.hilt.android.qualifiers.ApplicationContext
