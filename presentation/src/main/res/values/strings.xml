@@ -9,4 +9,6 @@
     <string name="vera_plus">Vera Plus</string>
     <string name="vera_secure">Vera Secure</string>
     <string name="vera_edge">Vera Edge</string>
+    <string name="hint_details_title">Title</string>
+    <string name="apply_changes">Apply Changes</string>
 </resources>

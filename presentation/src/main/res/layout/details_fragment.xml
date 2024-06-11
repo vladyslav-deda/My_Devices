@@ -24,11 +24,52 @@
         android:gravity="start"
         android:textColor="@color/dark_gray"
         android:textSize="24sp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/device_image_iv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/device_image_iv"
         app:layout_constraintTop_toTopOf="@+id/device_image_iv"
         tools:text="House Number 1" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/device_title_input_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        app:boxCornerRadiusBottomEnd="20dp"
+        app:boxCornerRadiusBottomStart="20dp"
+        app:boxCornerRadiusTopEnd="20dp"
+        app:boxCornerRadiusTopStart="20dp"
+        app:boxStrokeColor="@color/dark_gray"
+        app:cursorColor="@color/black"
+        app:hintEnabled="false"
+        app:layout_constraintBottom_toBottomOf="@+id/device_image_iv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/device_image_iv"
+        app:layout_constraintTop_toTopOf="@+id/device_image_iv">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/lastNameInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_regular"
+            android:hint="@string/hint_details_title"
+            android:inputType="textPersonName" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/apply_changes_btn"
+        style="@style/FilledBlueButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:paddingHorizontal="30dp"
+        android:paddingVertical="12dp"
+        android:text="@string/apply_changes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/device_image_iv" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/device_sn_tv"
@@ -40,7 +81,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/device_image_iv"
+        app:layout_constraintTop_toBottomOf="@+id/apply_changes_btn"
         tools:text="SN: 2342421413412" />
 
     <com.google.android.material.textview.MaterialTextView
