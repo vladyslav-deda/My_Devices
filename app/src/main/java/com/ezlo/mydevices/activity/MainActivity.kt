@@ -25,15 +25,18 @@ class MainActivity : AppCompatActivity(), FragmentCallback {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                viewModel.uiState.collect(::handleUiState)
+            }
+        }
         Glide
             .with(this)
             .load(R.drawable.profile_photo)
             .circleCrop()
             .into(binding.profilePhotoIv)
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.RESUMED) {
-                viewModel.uiState.collect(::handleUiState)
-            }
+        binding.resetBtn.setOnClickListener {
+            viewModel.handleResetList()
         }
     }
 

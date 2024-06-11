@@ -16,11 +16,11 @@ class ResetDevicesListUseCase @Inject constructor(
 ) {
     suspend operator fun invoke() {
         withContext(Dispatchers.IO) {
-            localDevicesRepository.deleteAllDevices()
             val devices = devicesRepository.retrieveDevicesList()
             devices.forEachIndexed { index, device ->
                 device.header = context.getString(R.string.house_number, index + 1)
             }
+            localDevicesRepository.deleteAllDevices()
             localDevicesRepository.insertDevices(devices)
         }
     }
