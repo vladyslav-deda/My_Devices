@@ -10,10 +10,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.bumptech.glide.Glide
 import com.ezlo.mydevices.presentation.FragmentCallback
+import com.ezlo.mydevices.presentation.R
 import com.ezlo.mydevices.presentation.databinding.DetailsFragmentBinding
-import com.ezlo.mydevices.presentation.home.HomeContract
-import com.ezlo.mydevices.presentation.home.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -22,7 +22,7 @@ class DetailsFragment : Fragment() {
     private var _binding: DetailsFragmentBinding? = null
     private val binding: DetailsFragmentBinding get() = _binding!!
 
-    private val viewModel: HomeViewModel by viewModels()
+    private val viewModel: DetailsViewModel by viewModels()
 
     private lateinit var fragmentCallback: FragmentCallback
 
@@ -50,19 +50,38 @@ class DetailsFragment : Fragment() {
                 viewModel.uiState.collect(::handleUiState)
             }
         }
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED) {
-                viewModel.effects.collect(::handleEffects)
+
+    }
+
+    private fun handleUiState(state: DetailsContract.State) {
+        fragmentCallback.handleLoaderVisibility(state.isLoading)
+        if (state.isLoading.not()) {
+            binding.run {
+                Glide
+                    .with(requireContext())
+                    .load(state.deviceIcon)
+                    .centerCrop()
+                    .into(deviceImageIv)
+                deviceTitleTv.text = state.title
+                deviceSnTv.text =
+                    requireContext().resources.getString(R.string.device_sn, state.deviceSn)
+                deviceMacAddressTv.text =
+                    requireContext().resources.getString(
+                        R.string.device_mac_address,
+                        state.deviceMacAddress
+                    )
+                deviceFirmwareTv.text =
+                    requireContext().resources.getString(
+                        R.string.device_firmware,
+                        state.deviceFirmware
+                    )
+                val deviceModel = state.deviceModelResource?.let {
+                    requireContext().resources.getString(it)
+                }
+                deviceModelTv.text =
+                    requireContext().resources.getString(R.string.device_model, deviceModel)
             }
         }
-    }
-
-    private fun handleUiState(state: HomeContract.State) {
-        fragmentCallback.handleLoaderVisibility(state.isLoading)
-    }
-
-    private fun handleEffects(effect: HomeContract.Effect) {
-
     }
 
     override fun onDestroyView() {
