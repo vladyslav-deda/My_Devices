@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -71,6 +72,7 @@ class HomeFragment : Fragment() {
     private fun handleUiState(state: HomeContract.State) {
         devicesAdapter?.submitList(state.items)
         fragmentCallback.handleLoaderVisibility(state.isLoading)
+        binding.emptyListMessageTv.isVisible = state.isLoading.not() && state.items.isEmpty()
     }
 
     private fun handleEffects(effect: HomeContract.Effect) {

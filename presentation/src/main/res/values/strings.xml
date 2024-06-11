@@ -2,4 +2,5 @@
 <resources>
     <string name="profile_name">Vladyslav Deda</string>
     <string name="device_sn">SN: %d</string>
+    <string name="empty_devices_list_message">Oops… it looks like the list of devices is empty, click the ‘Reset’ button to reload the list or check your internet connection</string>
 </resources>

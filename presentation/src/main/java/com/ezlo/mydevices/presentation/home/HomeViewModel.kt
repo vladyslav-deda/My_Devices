@@ -1,5 +1,6 @@
 package com.ezlo.mydevices.presentation.home
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ezlo.mydevices.domain.usecases.InitDevicesListUseCase
@@ -16,6 +17,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -39,7 +41,9 @@ class HomeViewModel @Inject constructor(
                 initDevicesListUseCase()
                 collectDevicesList()
             } catch (throwable: Throwable) {
+                Timber.d(throwable)
                 _effects.send(HomeContract.Effect.ShowError(throwable))
+                Log.i("myLogs", "${throwable.localizedMessage}: ")
             } finally {
                 updateUiState()
             }

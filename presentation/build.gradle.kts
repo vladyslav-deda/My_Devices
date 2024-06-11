@@ -55,6 +55,8 @@ dependencies {
 
     implementation(libs.bumptech.glide)
     kapt(libs.kapt.glide.compiler)
-    implementation (libs.androidx.lifecycle.viewmodel.ktx)
+
+    implementation (libs.timber)
+
     implementation(project(":domain"))
 }
