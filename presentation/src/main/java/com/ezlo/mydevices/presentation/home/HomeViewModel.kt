@@ -43,7 +43,6 @@ class HomeViewModel @Inject constructor(
             } catch (throwable: Throwable) {
                 Timber.d(throwable)
                 _effects.send(HomeContract.Effect.ShowError(throwable))
-                Log.i("myLogs", "${throwable.localizedMessage}: ")
             } finally {
                 updateUiState()
             }

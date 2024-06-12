@@ -22,7 +22,7 @@ class DeviceViewHolder(
             editBtn.setOnClickListener {
                 interaction.openDetails(deviceSn = item.deviceSn, isEditMode = true)
             }
-            deviceTitleTv.text = item.title
+            bindTitle(item.title)
             deviceSnTv.text = root.resources.getString(R.string.device_sn, item.deviceSn)
             Glide
                 .with(root.context)
@@ -31,5 +31,9 @@ class DeviceViewHolder(
                 .into(deviceImageIv)
 
         }
+    }
+
+    fun bindTitle(title: String) {
+        binding.deviceTitleTv.text = title
     }
 }

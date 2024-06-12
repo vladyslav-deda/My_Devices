@@ -26,6 +26,22 @@ class DevicesAdapter(
     ) {
         holder.bind(getItem(position))
     }
+
+    override fun onBindViewHolder(
+        holder: DeviceViewHolder,
+        position: Int,
+        payloads: MutableList<Any>,
+    ) {
+        when (val latestPayload = payloads.lastOrNull()) {
+            is DevicePayload -> {
+                latestPayload.title?.let {
+                    holder.bindTitle(it)
+                }
+            }
+
+            else -> onBindViewHolder(holder, position)
+        }
+    }
 }
 
 object DevicesDiff : DiffUtil.ItemCallback<DeviceUiModel>() {
@@ -41,5 +57,17 @@ object DevicesDiff : DiffUtil.ItemCallback<DeviceUiModel>() {
         newItem: DeviceUiModel,
     ): Boolean {
         return oldItem == newItem
+    }
+
+    override fun getChangePayload(
+        oldItem: DeviceUiModel,
+        newItem: DeviceUiModel,
+    ): Any? {
+        val title = if (oldItem.title != newItem.title) newItem.title else null
+        return when {
+            title != null -> DevicePayload(title = title)
+
+            else -> super.getChangePayload(oldItem, newItem)
+        }
     }
 }
