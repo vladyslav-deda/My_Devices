@@ -86,7 +86,12 @@ class HomeFragment : Fragment() {
             }
 
             is HomeContract.Effect.OpenDeviceDetails -> {
-                findNavController().navigate(HomeFragmentDirections.openDetailsFragment(effect.deviceSn))
+                findNavController().navigate(
+                    HomeFragmentDirections.openDetailsFragment(
+                        deviceId = effect.deviceSn,
+                        isEditMode = effect.isEditMode
+                    )
+                )
             }
 
             is HomeContract.Effect.OpenDeleteDeviceDialog -> {

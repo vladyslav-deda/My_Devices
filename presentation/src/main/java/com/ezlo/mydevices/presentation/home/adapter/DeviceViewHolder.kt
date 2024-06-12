@@ -19,6 +19,9 @@ class DeviceViewHolder(
                 interaction.handleDeleteDevice(item.deviceSn)
                 true
             }
+            editBtn.setOnClickListener {
+                interaction.openDetails(deviceSn = item.deviceSn, isEditMode = true)
+            }
             deviceTitleTv.text = item.title
             deviceSnTv.text = root.resources.getString(R.string.device_sn, item.deviceSn)
             Glide

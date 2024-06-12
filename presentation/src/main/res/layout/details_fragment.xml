@@ -49,7 +49,7 @@
         app:layout_constraintTop_toTopOf="@+id/device_image_iv">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/lastNameInput"
+            android:id="@+id/device_title_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/lato_regular"

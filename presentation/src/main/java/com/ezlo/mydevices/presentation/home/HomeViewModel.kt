@@ -57,9 +57,9 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    override fun openDetails(deviceSn: Int) {
+    override fun openDetails(deviceSn: Int, isEditMode: Boolean) {
         viewModelScope.launch {
-            _effects.send(HomeContract.Effect.OpenDeviceDetails(deviceSn))
+            _effects.send(HomeContract.Effect.OpenDeviceDetails(deviceSn, isEditMode))
         }
     }
 

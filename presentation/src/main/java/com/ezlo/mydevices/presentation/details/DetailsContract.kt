@@ -9,5 +9,13 @@ interface DetailsContract {
         val deviceMacAddress: String? = null,
         val deviceFirmware: String? = null,
         val deviceModelResource: Int? = null,
+        val isEditMode: Boolean = false,
+        val isApplyButtonEnabled: Boolean = false,
     )
+
+    sealed interface Effect {
+        data class SetupTitle(val isEditMode: Boolean, val defaultTitle: String) : Effect
+
+        data object ShowSuccessfulMessage : Effect
+    }
 }

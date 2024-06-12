@@ -11,4 +11,6 @@
     <string name="vera_edge">Vera Edge</string>
     <string name="hint_details_title">Title</string>
     <string name="apply_changes">Apply Changes</string>
+    <string name="successfully_updated_data_message">Your data has been successfully updated!</string>
+    <string name="edit">Edit</string>
 </resources>
