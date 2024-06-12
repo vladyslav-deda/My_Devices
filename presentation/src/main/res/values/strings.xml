@@ -13,4 +13,5 @@
     <string name="apply_changes">Apply Changes</string>
     <string name="successfully_updated_data_message">Your data has been successfully updated!</string>
     <string name="edit">Edit</string>
+    <string name="error_message">Looks like something went wrong, please try again!</string>
 </resources>

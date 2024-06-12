@@ -80,7 +80,7 @@ class HomeFragment : Fragment() {
             is HomeContract.Effect.ShowError -> {
                 Toast.makeText(
                     requireContext(),
-                    "Looks like something went wrong!!!",
+                    getString(R.string.error_message),
                     Toast.LENGTH_SHORT
                 ).show()
             }
