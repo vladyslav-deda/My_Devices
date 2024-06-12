@@ -44,17 +44,16 @@
         app:layout_constraintTop_toBottomOf="@+id/device_title_tv"
         tools:text="SN: 21342141242134214" />
 
-
-    <com.google.android.material.button.MaterialButton
+    <ImageButton
         android:id="@+id/edit_btn"
-        style="@style/Widget.Material3.Button.TextButton"
+        style="@style/Widget.Material3.Button.IconButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/edit"
-        android:textColor="@color/blue"
+        android:src="@drawable/edit_ic"
         app:layout_constraintBottom_toBottomOf="@+id/arrow_forward_iv"
         app:layout_constraintEnd_toStartOf="@+id/arrow_forward_iv"
-        app:layout_constraintTop_toTopOf="@+id/arrow_forward_iv" />
+        app:layout_constraintTop_toTopOf="@+id/arrow_forward_iv"
+        app:tint="@color/blue" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/arrow_forward_iv"
