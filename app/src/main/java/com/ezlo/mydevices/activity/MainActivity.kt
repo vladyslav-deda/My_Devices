@@ -7,6 +7,8 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import com.bumptech.glide.Glide
 import com.ezlo.mydevices.R
 import com.ezlo.mydevices.databinding.ActivityMainBinding
@@ -37,6 +39,13 @@ class MainActivity : AppCompatActivity(), FragmentCallback {
             .into(binding.profilePhotoIv)
         binding.resetBtn.setOnClickListener {
             viewModel.handleResetList()
+        }
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
+        val navController = navHostFragment.navController
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            binding.resetBtn.isVisible =
+                destination.id == com.ezlo.mydevices.presentation.R.id.homeFragment
         }
     }
 
